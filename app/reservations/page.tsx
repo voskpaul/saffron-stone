@@ -16,9 +16,11 @@ export default function ReservationsPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Save a seat"
+        variant="reservations"
+        eyebrow="SAVE A SEAT"
         title="Your table is waiting."
         description="Tell us what you have in mind and preview the reservation journey. This demo does not send or confirm a booking."
+        note="Preview only / No booking is placed"
       />
       <section className="section section--paper reservation-page">
         <div className="container reservation-layout">

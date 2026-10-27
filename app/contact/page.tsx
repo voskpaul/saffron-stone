@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Clock3 } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
@@ -25,9 +26,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   return (
     <>
       <PageIntro
-        eyebrow="We are listening"
+        variant="contact"
+        eyebrow="WE ARE LISTENING"
         title="Talk to us about the table."
         description="Questions about the menu, a special occasion or a sample visit? Choose a topic and explore the enquiry flow."
+        note="Sample details / No message is sent"
       />
       <section className="section section--paper contact-page">
         <div className="container contact-layout">
@@ -41,6 +44,15 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           </div>
 
           <aside className="contact-aside">
+            <figure className="contact-aside__image">
+              <Image
+                alt="A softly lit dining room with timber tables and woven pendant lights"
+                fill
+                sizes="(max-width: 760px) 100vw, 32vw"
+                src="/images/saffron-interior.png"
+              />
+              <figcaption><span>A room made for lingering</span><span>Nairobi, Kenya / concept image</span></figcaption>
+            </figure>
             <div className="contact-aside__block">
               <p className="eyebrow">Visit us</p>
               <h2>Find your way<br /><em>to the table.</em></h2>

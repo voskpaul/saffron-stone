@@ -44,20 +44,24 @@ export function AboutStory() {
       </section>
 
       <section className="section section--cream values-section">
-        <div className="container">
-          <div className="section-heading section-heading--center">
+        <div className="container values-layout">
+          <div className="values-intro">
             <p className="eyebrow">The feeling behind it</p>
             <h2>Good food is only<br /><em>part of the story.</em></h2>
+            <p>These are the small decisions that shape a memorable visit, from the first welcome to the last cup of tea.</p>
           </div>
-          <div className="values-grid">
+          <ol className="values-list">
             {values.map(({ number, icon: Icon, title, description }) => (
-              <article className="value-card" key={number}>
-                <div className="value-card__top"><span>{number}</span><Icon size={21} strokeWidth={1.6} aria-hidden="true" /></div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </article>
+              <li className="value-row" key={number}>
+                <span className="value-row__number">{number}</span>
+                <span className="value-row__icon"><Icon size={20} strokeWidth={1.6} aria-hidden="true" /></span>
+                <div className="value-row__copy">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 

@@ -12,9 +12,11 @@ export default function MenuPage() {
   return (
     <>
       <PageIntro
-        eyebrow="A menu for every kind of gathering"
+        variant="menu"
+        eyebrow="A MENU FOR EVERY KIND OF GATHERING"
         title="Come hungry. Leave with a story."
         description="Fresh ingredients, familiar comforts and a few new favourites. Take a look around the sample menu."
+        note="21 sample dishes / 7 menu chapters"
       />
       <section className="menu-page section section--paper">
         <div className="container">
@@ -25,7 +27,7 @@ export default function MenuPage() {
               <p>From slow mornings to long dinners, find a dish that feels right for the moment.</p>
             </div>
             <div className="menu-page-banner__image">
-              <Image alt="A richly set table with a grilled meal and colorful sides" fill preload sizes="(max-width: 760px) 100vw, 45vw" src="/images/saffron-hero.png" />
+              <Image alt="Grilled tilapia with coconut rice, lime and greens" fill preload sizes="(max-width: 760px) 100vw, 45vw" src="/images/saffron-fish.png" />
             </div>
           </div>
           <MenuExplorer />

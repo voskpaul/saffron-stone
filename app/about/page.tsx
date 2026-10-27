@@ -11,9 +11,11 @@ export default function AboutPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Our story"
+        variant="about"
+        eyebrow="OUR STORY"
         title="A little more care in every detail."
         description="A welcoming dining concept shaped by flavour, place and the simple pleasure of being together."
+        note="Nairobi, Kenya / Fictional portfolio concept"
       />
       <AboutStory />
     </>

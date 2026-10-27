@@ -32,7 +32,6 @@ export function HomeHero() {
             <span>Food for the middle of the table</span>
             <ArrowDownRight size={18} aria-hidden="true" />
           </figcaption>
-          <div className="hero-photo-index" aria-hidden="true"><span>01</span><span className="hero-photo-index__line" /><span>04</span></div>
         </figure>
       </div>
       <div className="home-hero__bottom container">

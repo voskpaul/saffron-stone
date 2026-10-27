@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { useMemo, useState } from "react"
 import { Search, SearchX, X } from "lucide-react"
 import { formatPrice, menuCategories, menuItems } from "@/lib/restaurant-data"
@@ -21,6 +20,13 @@ export function MenuExplorer() {
       return matchesCategory && matchesQuery
     })
   }, [activeCategory, query])
+
+  const groupedItems = menuCategories
+    .map((category) => ({
+      ...category,
+      items: filteredItems.filter((item) => item.category === category.id),
+    }))
+    .filter((group) => group.items.length > 0)
 
   return (
     <section aria-label="Browse menu" className="menu-explorer">
@@ -73,31 +79,30 @@ export function MenuExplorer() {
       </p>
 
       {filteredItems.length > 0 ? (
-        <div className="menu-list">
-          {filteredItems.map((item) => {
-            const category = menuCategories.find((entry) => entry.id === item.category)?.label
-
-            return (
-              <article className="menu-list-item" key={item.id}>
-                {item.image && (
-                  <div className="menu-list-item__image">
-                    <Image alt={item.imageAlt ?? item.name} fill sizes="96px" src={item.image} />
-                  </div>
-                )}
-                <div className="menu-list-item__copy">
-                  <div className="menu-list-item__title-line">
-                    <h2>{item.name}</h2>
-                    <span className="menu-list-item__price">{formatPrice(item.price)}</span>
-                  </div>
-                  <p>{item.description}</p>
-                  <div className="menu-list-item__tags">
-                    <span>{category}</span>
-                    {item.dietaryLabel && <span className="dietary-tag">{item.dietaryLabel}</span>}
-                  </div>
-                </div>
-              </article>
-            )
-          })}
+        <div className="menu-category-groups">
+          {groupedItems.map((group, index) => (
+            <section aria-labelledby={`menu-category-${group.id}`} className="menu-category-group" key={group.id}>
+              <header className="menu-category-group__heading">
+                <span className="menu-category-group__index">{String(index + 1).padStart(2, "0")}</span>
+                <h2 id={`menu-category-${group.id}`}>{group.label}</h2>
+                <span className="menu-category-group__count">{group.items.length} {group.items.length === 1 ? "dish" : "dishes"}</span>
+              </header>
+              <div className="menu-category-group__items">
+                {group.items.map((item) => (
+                  <article className="menu-list-item" key={item.id}>
+                    <div className="menu-list-item__copy">
+                      <div className="menu-list-item__title-line">
+                        <h3>{item.name}</h3>
+                        <span className="menu-list-item__price">{formatPrice(item.price)}</span>
+                      </div>
+                      <p>{item.description}</p>
+                      {item.dietaryLabel && <span className="menu-list-item__dietary">{item.dietaryLabel}</span>}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       ) : (
         <div className="menu-empty" role="status">
