@@ -17,7 +17,7 @@ export function WhatsAppCta({
   if (!href) {
     return (
       <p className={`whatsapp-demo-note ${className}`.trim()} role="note">
-        <MessageCircle size={17} aria-hidden="true" />
+        <Image alt="" aria-hidden="true" height={18} src="/icons/whatsapp.svg" width={18} />
         <span>WhatsApp is not connected in this demo. Add a business number to enable chat.</span>
       </p>
     )
@@ -25,7 +25,7 @@ export function WhatsAppCta({
 
   return (
     <a className={`whatsapp-cta ${className}`.trim()} href={href} rel="noreferrer" target="_blank">
-      <MessageCircle size={17} aria-hidden="true" />
+      <Image alt="" aria-hidden="true" height={18} src="/icons/whatsapp.svg" width={18} />
       <span>{label}</span>
     </a>
   )
